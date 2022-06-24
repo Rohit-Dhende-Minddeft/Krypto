@@ -33,10 +33,15 @@ const Navbar = () => {
     return (
       <>
         <div className={`${menuItemStyle} ${menuOptions}`}>
-          <span className="menu-options">Market</span>
-          <span className="menu-options">Exchange</span>
-          <span className="menu-options">Tutorials</span>
-          <span className="menu-options">Wallet</span>
+          {["Market", "Exchange", "Tutorials", "Wallet"].map(
+            (options, index) => {
+              return (
+                <span key={index} className="menu-options">
+                  {options}
+                </span>
+              );
+            }
+          )}
           <div className="login-btn">Login</div>
         </div>
         {isPortrait && (
