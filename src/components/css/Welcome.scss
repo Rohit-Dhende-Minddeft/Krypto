@@ -8,9 +8,9 @@
 .welcome-left-side {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 75vh;
 }
 .welcome-left-side-container {
   display: flex;
@@ -28,10 +28,10 @@
 .welcome-description {
   margin-top: 1em;
   font-size: 1.2em;
+  align-self: flex-start;
 }
 .welcome-left-side > div {
   text-align: left;
-  width: 70%;
 }
 .welcome-right-side {
   display: flex;
@@ -42,6 +42,7 @@
 }
 .table-container {
   display: flex;
+  align-self: flex-start;
   flex-direction: column;
   margin-top: 2em;
 }
@@ -145,6 +146,7 @@
   }
   .welcome-right-side {
     justify-content: flex-start;
+    margin-top: 1em;
   }
   .welcome-heading {
     align-self: center;
@@ -158,8 +160,27 @@
     width: 50px;
   }
 }
-@media only screen and (min-width: 480px) and (max-width: 700px) {
+@media only screen and (min-width: 480px) and (max-width: 900px) {
+  .welcome-portrait-view {
+    font-size: 0.8em;
+    height: 100vh;
+  }
+  .welcome-left-side {
+    justify-content: center;
+  }
+  .welcome-right-side {
+    justify-content: flex-start;
+    margin-top: 1em;
+  }
+  .welcome-heading {
+    align-self: center;
+  }
   .welcome-description {
-    margin-left: 3.2em;
+    align-self: center;
+    width: fit-content;
+    margin-left: 0em;
+  }
+  .table-row > div {
+    width: 50px;
   }
 }

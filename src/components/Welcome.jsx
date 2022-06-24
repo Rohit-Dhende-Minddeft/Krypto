@@ -39,7 +39,7 @@ const Welcome = () => {
             Send Crpto <br /> across the world
           </div>
           <div className="welcome-description">
-            Explore the crypto world. Buy and sell cryptocurrencies easily on
+            Explore the crypto world. Buy <br/>and sell cryptocurrencies easily on
             Krypto.
           </div>
           <div className="table-container">

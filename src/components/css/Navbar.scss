@@ -35,7 +35,7 @@
   align-items: center;
 }
 .portrait-view-menu {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translate(0, -50%);
   background-color: rgba(0, 0, 0, 1);
@@ -49,6 +49,9 @@
 .container {
   display: inline-block;
   cursor: pointer;
+  position: fixed;
+  right: 18%;
+  top: 2.5%;
 }
 .show-menu {
   visibility: visible;
@@ -68,6 +71,9 @@
 .change {
   z-index: 1000;
   cursor: pointer;
+  position: fixed;
+  right: 18%;
+  top: 2%;
 }
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-6px, 6px);
@@ -85,5 +91,6 @@
 @media only screen and (max-width: 700px) {
   .logo {
     height: 20px;
+    align-self: flex-start;
   }
 }
