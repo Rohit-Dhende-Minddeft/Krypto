@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ethereumLogo from "../images/weth.png";
 import "./css/Welcome.scss";
 
 import Loader from "./Loader";
 
+import { TransactionContext } from "../context/TransactionContext";
+
 const Welcome = () => {
+  const { connectWallet, currentAccount } = useContext(TransactionContext);
+
   const [windowDimenion, detectHW] = useState({
     winWidth: window.innerWidth,
     winHeight: window.innerHeight,
@@ -49,7 +53,6 @@ const Welcome = () => {
     );
   };
 
-  const connectWallet = () => {};
   const handleSubmit = () => {};
 
   return (
@@ -63,9 +66,14 @@ const Welcome = () => {
             Explore the crypto world. Buy <br />
             and sell cryptocurrencies easily on Krypto.
           </div>
-          <div onClick={connectWallet} className="collect-wallet-button">
-            Collect Wallet
-          </div>
+          {!currentAccount && (
+            <div onClick={connectWallet} className="collect-wallet-button">
+              Connect Wallet
+            </div>
+          )}
+          {currentAccount && (
+            <div className="collect-wallet-text">Your wallet is connected</div>
+          )}
           <div className="table-container">
             <div className="table-row">
               <div className="table-1-1">Reliability</div>
