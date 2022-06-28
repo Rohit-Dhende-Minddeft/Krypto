@@ -59,7 +59,7 @@ const Transactions = () => {
         )}
       </div>
 
-      {transactions.length && currentAccount && (
+      {transactions?.length && (
         <Carousel responsive={responsive}>
           {transactions.reverse().map((data, index) => {
             return <TransactionCard key={index} {...data} />;
