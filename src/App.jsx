@@ -3,7 +3,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="parent">
+    <div>
       <div className="landing-page">
         <Navbar />
         <Welcome />

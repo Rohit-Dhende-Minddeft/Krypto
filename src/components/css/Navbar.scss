@@ -45,6 +45,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1001;
 }
 .container {
   display: inline-block;
@@ -69,7 +70,7 @@
   transition: 0.4s;
 }
 .change {
-  z-index: 1000;
+  z-index: 1002;
   cursor: pointer;
   position: fixed;
   right: 5%;

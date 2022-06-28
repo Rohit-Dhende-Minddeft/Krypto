@@ -206,6 +206,7 @@
 @media only screen and (min-width: 300px) and (max-width: 480px) {
   .welcome-portrait-view {
     font-size: 0.7em;
+    padding-bottom: 3em;
   }
   .welcome-left-side {
     justify-content: center;
@@ -234,7 +235,7 @@
 @media only screen and (min-width: 480px) and (max-width: 900px) {
   .welcome-portrait-view {
     font-size: 0.8em;
-    height: 100vh;
+    padding-bottom: 3em;
   }
   .welcome-left-side {
     justify-content: center;

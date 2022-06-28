@@ -5,9 +5,28 @@ import "./css/Welcome.scss";
 import Loader from "./Loader";
 
 import { TransactionContext } from "../context/TransactionContext";
+import { shortenAddress } from "../utils/shortedAddress";
 
 const Welcome = () => {
-  const { connectWallet, currentAccount } = useContext(TransactionContext);
+  const {
+    connectWallet,
+    currentAccount,
+    formData,
+    sendTransaction,
+    handleChange,
+    isLoading,
+  } = useContext(TransactionContext);
+
+  const handleSubmit = (e) => {
+    const { addressTo, amount, keyword, message } = formData;
+
+    e.preventDefault();
+
+    if (!addressTo || !amount || !keyword || !message)
+      return alert("Please enter required data");
+
+    sendTransaction();
+  };
 
   const [windowDimenion, detectHW] = useState({
     winWidth: window.innerWidth,
@@ -38,22 +57,19 @@ const Welcome = () => {
     ? "welcome-portrait-view"
     : "welcome-desktop-view";
 
-  const Input = ({ placeholder, name, type, value, handleChange }) => {
-    return (
-      <input
-        placeholder={placeholder}
-        type={type}
-        step="0.0001"
-        value={value}
-        onChange={(e) => {
-          handleChange(e, name);
-        }}
-        className="input-field"
-      />
-    );
-  };
-
-  const handleSubmit = () => {};
+  // const Input = ({ placeholder, name, type, value, handleChange }) => (
+  //   <input
+  //     placeholder={placeholder}
+  //     type={type}
+  //     step="0.0001"
+  //     value={value}
+  //     onChange={(e) => {
+  //       console.log(e);
+  //       handleChange(e, name);
+  //     }}
+  //     className="input-field"
+  //   />
+  // );
 
   return (
     <div className={welcomeStyle}>
@@ -103,34 +119,49 @@ const Welcome = () => {
             </div>
           </div>
           <div className="welcome-ethereum-card-bottom">
-            <div className="welcome-ethereum-card-address">adress</div>
+            <div className="welcome-ethereum-card-address">
+              {currentAccount ? shortenAddress(currentAccount) : "--"}
+            </div>
             <div className="welcome-ethereum-card-label">Ethereum</div>
           </div>
         </div>
         <div className="welcome-form-fields">
-          <Input
+          <input
             placeholder={"Address To"}
-            name="addressTo"
-            type="text"
-            handleChange={() => {}}
+            type={"text"}
+            name={"addressTo"}
+            onChange={(e) => {
+              handleChange(e, "addressTo");
+            }}
+            className="input-field"
           />
-          <Input
-            placeholder={"Amount (ETH)"}
-            name="amount"
-            type="number"
-            handleChange={() => {}}
+          <input
+            placeholder={"Amount"}
+            type={"number"}
+            name={"amount"}
+            step={"0.0001"}
+            onChange={(e) => {
+              handleChange(e, "amount");
+            }}
+            className="input-field"
           />
-          <Input
-            placeholder={"Keyword (Gif)"}
-            name="keyword"
-            type="text"
-            handleChange={() => {}}
+          <input
+            placeholder={"keyword"}
+            type={"text"}
+            name={"keyword"}
+            onChange={(e) => {
+              handleChange(e, "keyword");
+            }}
+            className="input-field"
           />
-          <Input
-            placeholder={"Enter Message"}
-            name="message"
-            type="text"
-            handleChange={() => {}}
+          <input
+            placeholder={"message"}
+            type={"text"}
+            name={"message"}
+            onChange={(e) => {
+              handleChange(e, "message");
+            }}
+            className="input-field"
           />
           <div
             style={{
@@ -138,7 +169,7 @@ const Welcome = () => {
               marginTop: "1em",
             }}
           />
-          {false ? (
+          {isLoading ? (
             <Loader />
           ) : (
             <button
@@ -146,7 +177,7 @@ const Welcome = () => {
               onClick={handleSubmit}
               className="submit-button"
             >
-              Send now
+              Send Now
             </button>
           )}
         </div>

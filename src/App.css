@@ -1,4 +1,5 @@
-.parent {
+.landing-page {
   background-color: #7a7adb;
   background-image: linear-gradient(315deg, #7a7adb 0%, #170e13 74%);
+  min-height: 100vh;
 }
