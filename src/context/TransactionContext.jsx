@@ -146,8 +146,6 @@ export const TransactionProvider = ({ children }) => {
 
       const transactionCount = await transactionContract.getTransactionCount();
       setTransactionCount(transactionCount.toNumber());
-
-      window.reload();
     } catch (error) {
       console.error(error);
       throw new Error("No Ethereum object.");

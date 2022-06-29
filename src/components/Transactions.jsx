@@ -50,7 +50,7 @@ const Transactions = () => {
   };
 
   return (
-    <div className="transaction-parent">
+    <div className="transaction-parent" id="transaction">
       <div className="transaction-heading">
         {currentAccount ? (
           <div>Latest Transactions</div>
@@ -59,12 +59,16 @@ const Transactions = () => {
         )}
       </div>
 
-      {transactions?.length && (
+      {transactions?.length && transactions?.length !== 0 ? (
         <Carousel responsive={responsive}>
           {transactions.reverse().map((data, index) => {
             return <TransactionCard key={index} {...data} />;
           })}
         </Carousel>
+      ) : (
+        <div className="no-transactions">
+          No Transactions
+        </div>
       )}
     </div>
   );

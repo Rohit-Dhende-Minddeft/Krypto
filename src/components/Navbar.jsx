@@ -30,13 +30,28 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false);
     let menuStyle = toggle ? "change" : "container";
     let menuOptions = isPortrait ? (toggle ? "show-menu" : "hide-menu") : "";
+
+    const handleNavigation = (options) => {
+      if (options === "Services") {
+        window.location.replace("/#services");
+      }
+      if (options === "Transactions") {
+        window.location.replace("/#transaction");
+      }
+    };
     return (
       <>
         <div className={`${menuItemStyle} ${menuOptions}`}>
-          {["Market", "Exchange", "Tutorials", "Wallet"].map(
+          {["Services", "Transactions", "Tutorials", "Transfer"].map(
             (options, index) => {
               return (
-                <span key={index} className="menu-options">
+                <span
+                  key={index}
+                  className="menu-options"
+                  onClick={() => {
+                    handleNavigation(options);
+                  }}
+                >
                   {options}
                 </span>
               );
